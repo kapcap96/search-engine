@@ -1,17 +1,19 @@
 package org.example.entity;
 
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+@Data
 @Entity
 @Table(name = "search_engine")
 public class Page {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private Integer id;
 
     @NotEmpty(message = "значение должно быть задано")
@@ -22,4 +24,8 @@ public class Page {
 
     @NotNull
     private String content;
+
+    public Page() {
+    }
+
 }
