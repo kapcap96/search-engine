@@ -3,6 +3,7 @@ package org.example.controller;
 import org.example.pageRepository.PageRepository;
 import org.example.entity.Page;
 import org.example.service.SaveSiteService;
+import org.example.service.SaveSiteServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,8 @@ public class PageController {
 
 
     private static final String url = "http://www.playback.ru/";
+    @Autowired
+    private SaveSiteServiceInterface saveSiteServiceInterface;
 
     @Autowired
     private SaveSiteService saveSiteService;
@@ -34,6 +37,7 @@ public class PageController {
 
     @GetMapping("/")
     public List<Page> getAllP() {
+      //  saveSiteServiceInterface.saveSiteMap(url);
         saveSiteService.saveSiteMap(url);
         Iterable<Page> pageIterable = pageRepository.findAll();
         ArrayList<Page> pages = new ArrayList<>();

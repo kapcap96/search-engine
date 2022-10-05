@@ -19,15 +19,8 @@ public class Main {
 
 
 
-//        SiteScanner siteScanner = new SiteScanner(url);
-//        Set<Page> siteMap1;
-//        Date start = new Date();
-//        System.out.println(new Date());
-//        siteMap1 = new ForkJoinPool(100).invoke(siteScanner);
-//        System.out.println(siteMap1.size());
-////        var resultList = siteMap1.stream().map(Main::mapToUri).toList();
-////        System.out.println(resultList);
-//        System.out.println(new Date().getTime() - start.getTime());
+
+
 
 
 

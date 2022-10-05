@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e7821237-c46b-4010-8bb4-1ff798c33581" name="Changes" comment="Подключение БД">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/service/SaveSiteService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/service/SaveSiteServiceInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/service/SiteScanner.java" afterDir="false" />
+    <list default="true" id="e7821237-c46b-4010-8bb4-1ff798c33581" name="Changes" comment="добавлен класс SiteScanner.java &#10;Доработан класс SaveSiteService.java и его метод saveSiteMap&#10;добавлен в контроллер @Get метод getAll">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/service/ILemmaFinder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/service/LemmaFinder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Controller/PageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/PageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/PageRepository/PageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pageRepository/PageRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entity/Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entity/Page.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/PageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/PageController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,28 +55,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/79255/Desktop/Java/skillbox/search-engine/search-engine",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "com.haulmont.jpb.repository",
-    "spring.configuration.checksum": "918efa4253546172417e7a89a960baf6"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/79255/Desktop/Java/skillbox/search-engine/search-engine&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.haulmont.jpb.repository&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;918efa4253546172417e7a89a960baf6&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Spring Boot.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
@@ -124,7 +120,10 @@
       <option name="presentableId" value="Default" />
       <updated>1663165289712</updated>
       <workItem from="1663660754033" duration="4367000" />
-      <workItem from="1663665636075" duration="10621000" />
+      <workItem from="1663665636075" duration="11484000" />
+      <workItem from="1664176028248" duration="27000" />
+      <workItem from="1664176069429" duration="71000" />
+      <workItem from="1664895506296" duration="2124000" />
     </task>
     <task id="LOCAL-00001" summary="Подключение БД">
       <created>1663180989312</created>
@@ -133,7 +132,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663180989312</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="добавлен класс SiteScanner.java &#10;Доработан класс SaveSiteService.java и его метод saveSiteMap&#10;добавлен в контроллер @Get метод getAll">
+      <created>1663685719728</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1663685719728</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -152,6 +158,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Подключение БД" />
-    <option name="LAST_COMMIT_MESSAGE" value="Подключение БД" />
+    <MESSAGE value="добавлен класс SiteScanner.java &#10;Доработан класс SaveSiteService.java и его метод saveSiteMap&#10;добавлен в контроллер @Get метод getAll" />
+    <option name="LAST_COMMIT_MESSAGE" value="добавлен класс SiteScanner.java &#10;Доработан класс SaveSiteService.java и его метод saveSiteMap&#10;добавлен в контроллер @Get метод getAll" />
   </component>
 </project>
