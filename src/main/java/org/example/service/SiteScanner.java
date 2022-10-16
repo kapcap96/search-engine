@@ -1,13 +1,10 @@
 package org.example.service;
-
 import lombok.RequiredArgsConstructor;
 import org.example.entity.Page;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.springframework.stereotype.Service;
-
-import javax.validation.constraints.NotNull;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -18,14 +15,12 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.RecursiveTask;
 
+/**
+ * Класс SiteScanner представляет из себя парсер URL страниц.
+ */
 @RequiredArgsConstructor
 @Service
 public class SiteScanner extends RecursiveTask<Set<Page>> {
-
-    private final List<SiteScanner> siteScannerList = new CopyOnWriteArrayList<>();
-
-    private  String url;
-
 
     private static final CopyOnWriteArraySet<String> DOWNLOADED_URLS = new CopyOnWriteArraySet<>();
 
@@ -35,10 +30,18 @@ public class SiteScanner extends RecursiveTask<Set<Page>> {
 
     private static final String ATTRIBUTE_KEY = "href";
 
+    private final List<SiteScanner> siteScannerList = new CopyOnWriteArrayList<>();
+
+    private String url;
+
     public SiteScanner(String url) {
         this.url = url.trim();
     }
 
+    /**
+     * Метод compute параллельно парсит URL страницы при этом сохраняя все параметры Page в SET.
+     * @return Возвращает CopyOnWriteArraySet<Page>
+     */
     @Override
     protected Set<Page> compute() {
 
@@ -50,7 +53,10 @@ public class SiteScanner extends RecursiveTask<Set<Page>> {
 
             for (Element element : document.select(CSS_QUERY)) {
                 String attributeUrl = element.absUrl(ATTRIBUTE_KEY);
-                if (!attributeUrl.isEmpty() && attributeUrl.startsWith(url) && !DOWNLOADED_URLS.contains(attributeUrl) && !attributeUrl.contains("#")) {
+                if (!attributeUrl.isEmpty()
+                        && attributeUrl.startsWith(url)
+                        && !DOWNLOADED_URLS.contains(attributeUrl)
+                        && !attributeUrl.contains("#")) {
                     DOWNLOADED_URLS.add(attributeUrl);
 
                     Page page = new Page();

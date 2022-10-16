@@ -1,15 +1,14 @@
 package org.example.entity;
-
-
 import lombok.Data;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+/**
+ * Класс Page является страницей имеющие сл. параметры ID, путь страницы, код страницы и её контекст.
+ */
 @Data
 @Entity
-@Table(name = "search_engine")
 public class Page {
 
     @Id

@@ -1,11 +1,13 @@
 package org.example.service;
 
-import org.example.entity.Page;
-import org.springframework.stereotype.Service;
-
-@Service
+/**
+ * Интерфейс SaveSiteServiceInterface парсер html страницы и сохранение её параметров в БД.
+ */
 public interface SaveSiteServiceInterface {
 
-
+    /**
+     * Запускает парсин  html и сохраняет параметры (Page) в БД.
+     * @param url url адрес страницы
+     */
     public void saveSiteMap (String url);
 }

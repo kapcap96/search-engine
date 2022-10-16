@@ -1,20 +1,24 @@
 package org.example.service;
-
 import org.apache.lucene.morphology.LuceneMorphology;
 import org.apache.lucene.morphology.russian.RussianLuceneMorphology;
-
 import java.io.IOException;
 import java.util.*;
 
-public class LemmaFinder implements ILemmaFinder {
-    private final LuceneMorphology luceneMorphology;
+/**
+ * Класс LemmaFinder находит уникальные леммы в тексте и считает их количество.
+ */
+public class LemmaFinder implements LemmaFinderInterface {
+
     private static final String WORD_TYPE_REGEX = "\\W\\w&&[^а-яА-Я\\s]";
+
     private static final String[] particleName = {"МЕЖД", "ПРЕДЛ", "СОЮЗ"};
 
     public static LemmaFinder getInstance() throws IOException {
         LuceneMorphology morphology = new RussianLuceneMorphology();
         return new LemmaFinder(morphology);
     }
+
+    private final LuceneMorphology luceneMorphology;
 
     private LemmaFinder(LuceneMorphology luceneMorphology) {
         this.luceneMorphology = luceneMorphology;
@@ -75,8 +79,6 @@ public class LemmaFinder implements ILemmaFinder {
                 lemmaSet.addAll(luceneMorphology.getNormalForms(word));
             }
         }
-
-
         return lemmaSet;
     }
 
